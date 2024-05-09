@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  background-color:aliceblue;
+}
+.guess{
+    
+}
+
+.button{
+   
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(5, 42px); /* Creates 3 columns */
+    grid-gap:2px; /* Spacing between grid items */
+    padding: 20px;
+    justify-content: center;
+    font-size: x-large;
+    font-weight: 800;
+    
+
+    
+}
+.grid-item{
+    background-color:ghostwhite; /* Light grey background */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 40px; /* Fixed height for each item */
+    width: 40px;
+    border: 1px solid #ddd; /* Light grey border */
+    
+    margin-top: 2px; /* Add margin between grid items vertically */
+    
+}
+
+.grid-item.correct{
+    --background-color: rgb(22, 138, 22);
+    animation: flip 0.7s ease forwards;
+}
+.grid-item.absent{
+    --background-color: grey;
+    animation: flip 0.7s ease forwards;
+
+}
+.grid-item.present{
+   --background-color:palegoldenrod;
+    animation: flip 0.7s ease forwards;
+
+}
+
+
+/* Base game styling */
+.game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Layout for the keyboard */
+.button {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); /* Adjust based on the longest row of keys */
+    gap: 5px;
+    margin-top: 20px;
+}
+
+/* Generic button styles */
+.button button {
+    padding: 10px 16px;
+    font-size: 16px;
+    background-color: #f4f4f4;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+/* Hover and active states */
+.button button:hover {
+    background-color: #e2e2e2;
+}
+
+.button button:active {
+    background-color: #d0d0d0;
+    transform: translateY(2px);
+    box-shadow: none; /* Flatten the button when pressed */
+}
+
+/* Specific styles for large keys */
+.button button.ENTER, .button button.BACKSPACE {
+    grid-column: span 3; /* Makes these buttons wider */
+}
+
+/* Status message styling */
+.status {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #31708e;
+    font-weight: bold;
+}
+
+/* Optional: responsiveness */
+@media (max-width: 600px) {
+    .button {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .button button.ENTER, .button button.BACKSPACE {
+        grid-column: span 5;
+    }
+}
+
+ 
+/* animation */
+
+
+.grid-item:nth-child(2){
+    animation-delay: 0.2s;
+    }
+    .grid-item:nth-child(3){
+        animation-delay: 0.4s;
+    }
+    .grid-item:nth-child(4){
+        animation-delay: 0.6s;
+    }
+    .grid-item:nth-child(5){
+        animation-delay: 0.8s;
+    }
+    
+@keyframes flip {
+  0%{
+    transform: rotateX(0);
+    background-color: ghostwhite;
+    border-color: #333;
+  } 
+  45%{
+    transform: rotateX(90deg);
+    background-color: ghostwhite;
+    border-color: #333;
+  } 
+  55%{
+    transform: rotateX(90deg);
+    
+    border-color: #333;
+    background-color: var(--background-color);
+  } 
+  100%{
+    transform: rotateX(0);
+    background-color: var(--background-color);
+    border-color: #333;
+  } 
+}
